@@ -223,7 +223,7 @@ func (server *Server) getStandardRequestRouter() *mux.Router {
 		requestHandler = handlers.CompressResponses(requestHandler)
 
 		// add authentication
-		if _, httpsEnabled := server.httpsEndpoint(); httpsEnabled && server.config.AuthenticationIsEnabled() {
+		if server.config.AuthenticationIsEnabled() {
 			secretProvider := server.config.GetAuthenticationUserStore()
 			if secretProvider == nil {
 				panic("Authentication is enabled but the supplied secret provider is nil.")

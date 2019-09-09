@@ -598,12 +598,6 @@ func (config *Config) AuthenticationIsEnabled() bool {
 		return false
 	}
 
-	// we will only allow basic authentication over https
-	if config.Server.HTTP.Enabled && config.Server.HTTPS.HTTPSIsForced() == false {
-		fmt.Println("Basic-Authentication over HTTP is not available. Please disable HTTP or force HTTPS in order to use basic-authentication.")
-		os.Exit(1)
-	}
-
 	return true
 }
 
